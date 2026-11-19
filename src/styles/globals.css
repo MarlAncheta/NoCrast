@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-night: #0e1120;
+  --color-panel: #181d33;
+  --color-raised: #252c50;
+  --color-raised-hover: #303861;
+  --color-snow: #f5f2ea;
+  --color-ink: #0f172a;
+  --color-brand: #ff7a1a;
+  --color-sun: #ffc93c;
+  --color-amber: #f59e0b;
+  --color-amber-hover: #fbbf24;
+  --color-amber-press: #d97706;
+  --color-blue: #3d6bff;
+  --color-blue-hover: #2f58e6;
+  --color-blue-press: #2749c4;
+  --color-red: #f2493d;
+  --color-red-hover: #dc3a2f;
+  --color-red-press: #bf2f26;
+  --radius-card: 1.5rem;
+  --font-sans: ui-rounded, 'Arial Rounded MT Bold', 'Trebuchet MS', system-ui, sans-serif;
+}
+
+/* One look for every major container: a faint border, the same radius and padding. */
+@utility card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+}
+@utility card-inner {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@utility toast-in {
+  animation: toast-in 160ms ease-out;
+}
+
+html {
+  color-scheme: dark;
+}
+body {
+  background: var(--color-night);
+  color: var(--color-snow);
+  font-family: var(--font-sans);
+  /* Room under the page for notices, so content can always be scrolled clear of them. */
+  padding-bottom: var(--toast-space, 0px);
+}
+:focus-visible {
+  outline: 3px solid var(--color-sun);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
