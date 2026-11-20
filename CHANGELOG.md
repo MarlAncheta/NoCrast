@@ -8,7 +8,7 @@ All notable changes to NoCrast. The format follows [Keep a Changelog](https://ke
 - Only the tracked task shows a live ticking timer. Other open tasks show a quiet "Created … ago", with their clocks still running underneath. Tasks are clearly Active (TRACKING NOW), Queued or Done.
 - Break mode leads with a large countdown. The task timer is smaller and dimmed, with a note that task timers keep running.
 - Priority is a thin colored left edge (red urgent, amber high, blue low, neutral medium) and is also written out. The OPEN badge was removed, and OVERDUE is a quiet label.
-- Notices are anchored bottom-right (full width on a phone), never overlap, show the newest three with a count of the rest, offer Dismiss all, and the page reserves room under them.
+- Notices are anchored bottom-right (full width on a phone) and never overlap each other. They show the newest three with a count of the rest and a Dismiss all button. On screens 1200px wide or more the page leaves them a gutter so nothing is covered; on narrower screens the page reserves room underneath.
 - Buttons follow one scheme: amber with dark text, blue with white text, red with white text, with hover, pressed, disabled and focus states.
 - Major cards share one faint border, radius and padding. The timer card keeps its blue outline.
 - Analytics: "Completed tasks" (a duplicate of "Finished tasks") was replaced by On-time completion. The minutes chart has gridlines, axis labels and exact tooltips.
@@ -16,6 +16,7 @@ All notable changes to NoCrast. The format follows [Keep a Changelog](https://ke
 - The task card action buttons stay together, and the timer text resizes so nothing scrolls sideways on a phone.
 
 ### Added
+- A demo video (MP4) and an animated GIF, plus more screenshots: the task form, the break picker, notices, a grouped interruption card and three phone-sized pictures. `npm run demo` and `npm run screenshots` regenerate them.
 - Grouped, expandable interruptions with "Mark all as Distraction", Productive and Necessary bulk actions.
 - Browser tests for each of the changes above, including a phone-sized screen.
 

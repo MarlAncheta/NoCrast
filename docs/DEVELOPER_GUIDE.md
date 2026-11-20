@@ -40,8 +40,7 @@ npm run dev
 | `format` | Prettier on `src` |
 | `test` | Vitest, unit and component tests |
 | `test:e2e` | Playwright. Needs `npx playwright install chromium` once. |
-| `screenshots` | Regenerates `docs/screenshots` from the running preview. Set `CHROMIUM_PATH` if Playwright's browser is not installed. |
-
+\1| `demo` | Records the captioned demo video (`docs/demo`) from the running preview. Needs ffmpeg on the PATH, or set `FFMPEG`. |\n
 GitHub Actions (`.github/workflows/ci.yml`) runs the typecheck, lint, unit and component tests and the build on every push and pull request. The Playwright tests are not part of it.
 
 Prettier settings: single quotes, no semicolons, 140 columns.
@@ -170,7 +169,12 @@ When a break is active the timer card renders `BreakPanel` first, with the count
 
 ### Notices
 
-`ToastStack` is a fixed, `pointer-events-none` column at the bottom-right (full width on a phone) with each notice `pointer-events-auto`, so clicks pass through the gaps. It shows the newest three, summarizes the rest, and offers Dismiss all. While it is mounted it sets the CSS variable `--toast-space` on the root element to its own height (using a `ResizeObserver`), and `globals.css` adds that as bottom padding on the page, so content can always be scrolled clear of the notices.
+`ToastStack` is a fixed, `pointer-events-none` column at the bottom-right (full width on a phone) with each notice `pointer-events-auto`, so clicks pass through the gaps. It shows the newest three, summarizes the rest, and offers Dismiss all. While it is mounted it sets two CSS variables on the root element, using a `ResizeObserver`:
+
+- `--toast-gutter` (26rem). On screens 1200px wide or more, `globals.css` turns this into right padding on the page, so the content sits beside the notices and nothing is ever under one.
+- `--toast-space` (the stack's height plus a margin). On narrower screens the notices overlay the page, and this becomes bottom padding so anything covered can be scrolled clear.
+
+Both are reset to 0 when the last notice goes. The padding eases back, so tests wait for it.
 
 ### Distraction tracking
 

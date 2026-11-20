@@ -192,9 +192,12 @@ describe('ToastStack', () => {
     expect(stack.className).toContain('sm:bottom-4')
     expect(stack.className).toContain('inset-x-3') // full width on a phone
     expect(screen.getByRole('alert').className).toContain('pointer-events-auto')
-    expect(document.documentElement.style.getPropertyValue('--toast-space')).toBe('24px')
+    const root = document.documentElement.style
+    expect(root.getPropertyValue('--toast-space')).toBe('24px')
+    expect(root.getPropertyValue('--toast-gutter')).toBe('26rem') // a gutter for wide screens
     unmount()
-    expect(document.documentElement.style.getPropertyValue('--toast-space')).toBe('0px')
+    expect(root.getPropertyValue('--toast-space')).toBe('0px')
+    expect(root.getPropertyValue('--toast-gutter')).toBe('0px')
   })
 })
 

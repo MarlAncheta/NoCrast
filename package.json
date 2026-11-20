@@ -26,7 +26,8 @@
     "lint": "eslint src",
     "format": "prettier --write src",
     "test:e2e": "playwright test",
-    "screenshots": "node scripts/screenshots.mjs"
+    "screenshots": "node scripts/screenshots.mjs",
+    "demo": "node scripts/demo.mjs"
   },
   "dependencies": {
     "dexie": "^4.4.7",

@@ -17,8 +17,9 @@ const LEVEL_STYLE: Record<DeadlineLevel, string> = {
 const MAX_SHOWN = 3
 
 // Notices sit in the bottom-right corner (full width on a phone), newest at the bottom, and never overlap each other.
-// They stay until dismissed. The empty gaps let clicks through, and the page gets extra room underneath
-// (the --toast-space variable) so anything a notice covers can be scrolled clear of it.
+// They stay until dismissed. The empty gaps let clicks through. On screens 1200px wide or more the page moves over to
+// leave a gutter for the notices (--toast-gutter), so they never cover anything. On narrower screens they overlay the page,
+// which gets extra room underneath (--toast-space) so anything covered can be scrolled clear.
 export function ToastStack({
   toasts,
   onDismiss,
@@ -33,13 +34,18 @@ export function ToastStack({
     const el = ref.current
     if (!el || typeof ResizeObserver === 'undefined') return
     const root = document.documentElement
-    const reserve = () => root.style.setProperty('--toast-space', `${el.offsetHeight + 24}px`)
+    // Narrow screens: room under the page. Wide screens: a gutter beside it, so nothing sits under a notice.
+    const reserve = () => {
+      root.style.setProperty('--toast-space', `${el.offsetHeight + 24}px`)
+      root.style.setProperty('--toast-gutter', '26rem')
+    }
     reserve()
     const observer = new ResizeObserver(reserve)
     observer.observe(el)
     return () => {
       observer.disconnect()
       root.style.setProperty('--toast-space', '0px')
+      root.style.setProperty('--toast-gutter', '0px')
     }
   }, [toasts.length])
 

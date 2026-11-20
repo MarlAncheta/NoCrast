@@ -75,7 +75,7 @@ If a task has a deadline, NoCrast warns you as it gets close: **1 month, 2 weeks
 Each warning reaches you three ways:
 
 - A **desktop notification**. This is the one that gets to you when you are in another tab, in another window, or in a completely different application. Click it to jump back to NoCrast. The 10 minute, 5 minute, 1 minute and overdue warnings stay on screen until you dismiss them, where your computer allows that.
-- A **notice inside NoCrast**, in the bottom-right corner of the window (full width on a phone), which stays until you press **Dismiss**. Notices stack without overlapping, the newest three are shown (older ones collapse into "2 earlier notices"), and **Dismiss all** clears them. The page gets extra room underneath while notices are showing, so you can always scroll a button clear of them.
+- A **notice inside NoCrast**, in the bottom-right corner of the window, which stays until you press **Dismiss**. On a screen 1200 pixels wide or more, the page moves over to leave a gutter for the notices, so they never cover anything. On a narrower screen or a phone they overlay the page (full width on a phone), and the page gets extra room underneath so you can scroll anything clear of them. Notices stack without overlapping, the newest three are shown (older ones collapse into "2 earlier notices"), and **Dismiss all** clears them.
 - A **sound**, which you choose in Settings (see below).
 
 The 5 and 1 minute warnings say "Nice try" because you are racing the deadline.

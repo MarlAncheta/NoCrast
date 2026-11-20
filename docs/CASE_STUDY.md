@@ -4,6 +4,8 @@ A case study of a local-first web app for measuring how long work really takes, 
 
 ![NoCrast: the Today page with the big timer, open and done tasks, and an overdue notice](screenshots/today.png)
 
+[Watch the demo video](demo/nocrast-demo.mp4) (1 min 48 s, with captions).
+
 ## At a glance
 
 | | |

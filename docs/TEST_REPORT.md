@@ -88,7 +88,7 @@ Storage tests run against an in-memory IndexedDB (`fake-indexeddb`). Component t
 - Priority edges use the stated colors; there is no OPEN badge.
 - During a break the countdown is larger than, and above, the task timer; the task timer sits in a dimmed block; all controls remain; after the break expires, detection resumes with nothing pre-labeled.
 - Three close tab switches form one group that expands, labels individually, labels all at once, and clears after a minute; the distraction counter matches.
-- Notices stay in the corner, never overlap, leave every button clickable (Playwright refuses to click a covered element) and the reserved space returns when they are dismissed, on a desktop and a phone-sized screen.
+- Notices stay in the corner and never overlap each other. On a desktop-width screen the page leaves a gutter, and the test checks that no button, field or link overlaps any notice. On a phone-sized screen every button stays clickable (Playwright refuses to click a covered element). The reserved space returns when the notices are dismissed.
 - Button, border, radius and padding values match the specification, including hover and keyboard focus.
 - On-time completion is 50% for one on-time and one late deadline task (a task with no deadline is ignored); with no deadlines it says "No deadlines yet". The chart has gridlines, axis labels and exact tooltips.
 - Settings inputs are between 80 and 100 px wide with units beside them, and out-of-range values are corrected.

@@ -24,7 +24,7 @@ export const DEADLINE_MESSAGES: Record<string, { title: string; body: (task: str
   '1h': { title: '1 hour left', body: (t) => `Only an hour left on "${t}".` },
   '30m': { title: '30 minutes left', body: (t) => `Half an hour left on "${t}". Time to wrap it up.` },
   '10m': { title: '10 minutes left', body: (t) => `10 minutes to finish "${t}".` },
-  '5m': { title: '5 minutes left', body: (t) => `Keep trying 5 minutes left before the deadline for "${t}"!` },
+  '5m': { title: '5 minutes left', body: (t) => `Nice try getting "${t}" done before the deadline! 5 minutes left.` },
   '1m': { title: '1 minute left', body: (t) => `Nice try getting "${t}" done before the deadline! 1 minute left.` },
   overdue: { title: 'Overdue', body: (t) => `"${t}" passed its deadline. Its timer keeps running.` },
 }

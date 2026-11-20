@@ -57,6 +57,14 @@ body {
   font-family: var(--font-sans);
   /* Room under the page for notices, so content can always be scrolled clear of them. */
   padding-bottom: var(--toast-space, 0px);
+  transition: padding-right 150ms ease;
+}
+/* On a wide screen the notices get a gutter of their own instead of covering the page. */
+@media (min-width: 1200px) {
+  body {
+    padding-bottom: 0;
+    padding-right: var(--toast-gutter, 0px);
+  }
 }
 :focus-visible {
   outline: 3px solid var(--color-sun);

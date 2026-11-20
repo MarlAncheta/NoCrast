@@ -157,13 +157,29 @@ for (const vp of [
         const overlap = a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height
         expect(overlap).toBe(false)
       }
-    expect(await page.evaluate(() => parseFloat(getComputedStyle(document.body).paddingBottom))).toBeGreaterThan(100)
+    if (vp.name === 'desktop') {
+      // A gutter beside the page: no button, field or link overlaps any notice at any scroll position.
+      expect(await page.evaluate(() => parseFloat(getComputedStyle(document.body).paddingRight))).toBeGreaterThanOrEqual(400)
+      const controls = (await page.locator('main:visible button, main:visible input, main:visible select, main:visible a').all()).filter(
+        Boolean,
+      )
+      for (const control of controls) {
+        const c = await control.boundingBox()
+        if (!c) continue
+        for (const b of boxes)
+          expect(c.x + c.width <= b.x || b.x + b.width <= c.x || c.y + c.height <= b.y || b.y + b.height <= c.y).toBe(true)
+      }
+    } else {
+      expect(await page.evaluate(() => parseFloat(getComputedStyle(document.body).paddingBottom))).toBeGreaterThan(100)
+    }
 
     // Playwright refuses to click anything that is covered, so this proves the notices do not block the buttons.
     for (const title of ['C', 'B', 'A']) await page.getByRole('button', { name: `Complete ${title}` }).click()
     await page.getByRole('button', { name: 'Dismiss all' }).click()
     await expect(page.getByRole('alert')).toHaveCount(0)
     expect(await page.evaluate(() => parseFloat(getComputedStyle(document.body).paddingBottom))).toBe(0)
+    // the gutter eases away, so wait for it rather than reading it mid-transition
+    await expect.poll(() => page.evaluate(() => parseFloat(getComputedStyle(document.body).paddingRight))).toBe(0)
   })
 }
 

@@ -12,17 +12,39 @@ Everything runs in your browser. There are no accounts, no servers and no analyt
 
 Most productivity tools tell you what to do. Very few show you what you actually did. NoCrast measures how long work really takes, warns you before deadlines, and notices when attention drifts, without pretending to know why. It only ever records a *possible* distraction, you decide what each one was, and declared breaks are never held against you. Your data never leaves your browser. The full story, with the design decisions and the problems I solved, is in the [case study](docs/CASE_STUDY.md).
 
+## Demo
+
+![NoCrast demo: creating tasks, deadline warnings, grouped interruptions, a break, analytics and settings](docs/demo/nocrast-demo.gif)
+
+[Watch the full video](docs/demo/nocrast-demo.mp4) (1 min 48 s, with captions).
+
 ## Screenshots
 
 Sample data from a simulated session.
 
 | Today | Break mode |
 |---|---|
-| ![Today: big timer, tasks with live timers, an overdue notice](docs/screenshots/today.png) | ![Break mode with countdown and extend, skip and end buttons](docs/screenshots/break.png) |
+| ![Today: big timer, active, queued and done tasks, grouped interruptions, an overdue notice](docs/screenshots/today.png) | ![Break mode with the countdown first and the task timer dimmed](docs/screenshots/break.png) |
+
+| New task | Take a break |
+|---|---|
+| ![The new task form with hint text](docs/screenshots/task-form.png) | ![Choosing a break length](docs/screenshots/break-picker.png) |
+
+| Deadline notices | Grouped interruptions |
+|---|---|
+| ![Deadline notices in their own gutter at the right](docs/screenshots/notices.png) | ![An expanded group of three short interruptions](docs/screenshots/interruptions-group.png) |
 
 | Analytics | Settings |
 |---|---|
-| ![Analytics: task and break minutes, focus versus interruptions, break summary](docs/screenshots/analytics.png) | ![Settings: detection, notification sound, your data](docs/screenshots/settings.png) |
+| ![Analytics with on-time completion and the minutes chart](docs/screenshots/analytics.png) | ![Settings with compact number inputs and the notification sound](docs/screenshots/settings.png) |
+
+On a phone:
+
+<p>
+  <img src="docs/screenshots/phone-today.png" alt="Today on a phone" width="240">
+  <img src="docs/screenshots/phone-break.png" alt="Break mode on a phone" width="240">
+  <img src="docs/screenshots/phone-analytics.png" alt="Analytics on a phone" width="240">
+</p>
 
 ## Features
 
@@ -80,8 +102,7 @@ npm run preview
 | `npm run format` | Run Prettier on `src` |
 | `npm test` | Run unit and component tests with Vitest |
 | `npm run test:e2e` | Run Playwright end-to-end tests (builds and serves the app first) |
-| `npm run screenshots` | Regenerate the pictures in `docs/screenshots` (run `npm run build && npm run preview` first) |
-
+\1| `npm run demo` | Re-record the demo video and GIF in `docs/demo` (needs ffmpeg; run `npm run build && npm run preview` first) |\n
 For the end-to-end tests, install the browser once with `npx playwright install chromium`.
 
 ## Tech stack
